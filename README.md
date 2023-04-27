@@ -43,4 +43,136 @@ Buzzer is a circuit element that can operate with small voltages and produce sou
 You can quickly and easily access the necessary materials for the Arduino parking sensor from Robotistan.com and complete your project. Now let's move on to the construction of a parking sensor with Arduino.
 # Arduino Parking Sensor Circuit Diagram;
 ![arduino-park-sensoru-devre-semasi](https://user-images.githubusercontent.com/73740265/234953928-cd2f91ba-7b59-4b31-93e7-0ff32bcf4c58.png)
+# Parking Sensor Arduino Codes;
+#include <Arduino.h>
+
+int triggerPin = 5;
+
+int echoPin = 6;
+
+int buzzer = 11;
+
+long zaman;
+
+int mesafe;
+
+void setup()
+
+{
+
+  pinMode(3,OUTPUT); 
+  
+  pinMode(9,OUTPUT);
+  
+  pinMode(10 ,OUTPUT); 
+  
+  pinMode(triggerPin, OUTPUT);
+  
+  pinMode(echoPin, INPUT);
+  
+  Serial.begin(9600);
+  
+}
+
+
+void loop(){
+ 
+  int i=0;
+  
+  digitalWrite(triggerPin, LOW);
+  
+  delayMicroseconds(2);
+  
+  digitalWrite(triggerPin, HIGH);
+  
+  delayMicroseconds(10);
+  
+  digitalWrite(triggerPin, LOW);
+  
+  zaman = pulseIn(echoPin, HIGH);
+  
+  mesafe = zaman * 0.034 / 2;
+  
+  if (mesafe <12) {  
+  
+    digitalWrite(9,LOW);
+    
+    digitalWrite(10,LOW);
+    
+    digitalWrite(3,HIGH);
+    
+    tone(buzzer,250);
+    
+  }
+  
+  else if (mesafe > 18 && mesafe<= 25) {
+  
+    digitalWrite(3,LOW);
+    
+    digitalWrite(10,LOW);
+    
+    digitalWrite(9,HIGH);
+    
+    while (i<2){
+    
+      i++;
+      
+      tone(buzzer,450);
+      
+      delay(200);
+      
+      noTone(buzzer);
+      
+      delay(200);
+      
+    }
+    
+    delay(2000);
+    
+  }
+  
+  else if (mesafe >= 12 && mesafe<= 18) {
+  
+    digitalWrite(3,LOW);
+    
+    digitalWrite(10,LOW);
+    
+    digitalWrite(9,HIGH);
+    
+    while (i<2) {
+    
+      i++;
+      
+      tone(buzzer,450);
+      
+      delay(200);
+      
+      noTone(buzzer);
+      
+      delay(200);
+      
+    }
+    
+    delay(200);
+    
+  }
+  
+  else if (mesafe>25 ) { 
+  
+    digitalWrite(9,LOW);
+    
+    digitalWrite(3,LOW);
+    
+    digitalWrite(10,HIGH);
+    
+    noTone(buzzer);
+    
+  }
+  
+}
+
+}
+
+
+
 
