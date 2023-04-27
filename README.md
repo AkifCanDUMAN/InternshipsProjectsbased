@@ -42,3 +42,5 @@ Ultrasonic Distance Sensor measures the multiplying and returning speed of the u
 Buzzer is a circuit element that can operate with small voltages and produce sound with the incoming electrical signal.
 You can quickly and easily access the necessary materials for the Arduino parking sensor from Robotistan.com and complete your project. Now let's move on to the construction of a parking sensor with Arduino.
 # Arduino Parking Sensor Circuit Diagram;
+![arduino-park-sensoru-devre-semasi](https://user-images.githubusercontent.com/73740265/234953928-cd2f91ba-7b59-4b31-93e7-0ff32bcf4c58.png)
+
